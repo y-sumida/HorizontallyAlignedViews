@@ -9,17 +9,33 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
 
+    private var price = 0 {
+        didSet {
+            label2.text = "\(price)JPY"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        label1.text = "The quick brown fox jumps over the lazy dog."
+        price = 0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func plus(_ sender: Any) {
+        price += 100
+        self.label2.layoutIfNeeded()
+    }
 
+    @IBAction func clear(_ sender: Any) {
+        price = 0
+    }
+    
 }
 
